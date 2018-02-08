@@ -57,7 +57,7 @@ class Connection:
         self.started = True
 
     def wait(self, timeout=30):
-        self.__greenlet.join()
+        self.__greenlet.join(timeout)
 
         return self.__greenlet.ready()
 
