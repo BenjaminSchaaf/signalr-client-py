@@ -57,7 +57,9 @@ class Connection:
         self.started = True
 
     def wait(self, timeout=30):
-        gevent.joinall([self.__greenlet], timeout)
+        self.__greenlet.join()
+
+        return self.__greenlet.ready()
 
     def send(self, data):
         self.__transport.send(data)
